@@ -390,7 +390,7 @@ Week_begin = ...</DefaultAnnotationText>
     </Node>
     <Node ToolID="29">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="1374" y="294" />
+        <Position x="1254" y="318" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -554,7 +554,7 @@ Week_begin = ...</DefaultAnnotationText>
     </Node>
     <Node ToolID="40">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-        <Position x="1038" y="294" />
+        <Position x="1026" y="282" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -589,53 +589,6 @@ Week_begin = ...</DefaultAnnotationText>
         </Annotation>
       </Properties>
       <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
-    </Node>
-    <Node ToolID="43">
-      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
-        <Position x="846" y="126" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <SummarizeFields>
-            <SummarizeField field="StoreID" action="GroupBy" rename="StoreID" />
-            <SummarizeField field="Invoice Number" action="GroupBy" rename="Invoice Number" />
-            <SummarizeField field="Invoice Date" action="GroupBy" rename="Invoice Date" />
-            <SummarizeField field="Week" action="GroupBy" rename="Week" />
-            <SummarizeField field="Week_begin" action="GroupBy" rename="Week_begin" />
-            <SummarizeField field="Week_end" action="GroupBy" rename="Week_end" />
-            <SummarizeField field="Sum_Gross Margin" action="Sum" rename="Sum_Sum_Gross Margin" />
-            <SummarizeField field="Sum_Sales" action="Sum" rename="Sum_Sum_Sales" />
-          </SummarizeFields>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
-    </Node>
-    <Node ToolID="44">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="990" y="126" />
-      </GuiSettings>
-      <Properties>
-        <Configuration>
-          <File FileFormat="19" MaxRecords="">E:\Dokumente\05_Studium\Udacity\Predictive_Analytics\0_Projects\Project6_AB_Test\P6_Sales_Data.yxdb</File>
-          <Passwords />
-          <FormatSpecificOptions>
-            <NoSpatialIndex>False</NoSpatialIndex>
-            <SaveSource>True</SaveSource>
-          </FormatSpecificOptions>
-          <MultiFile value="False" />
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText>P6_Sales_Data.yxdb</DefaultAnnotationText>
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
     </Node>
     <Node ToolID="45">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
@@ -701,6 +654,55 @@ Week_begin = ...</DefaultAnnotationText>
       </Properties>
       <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
     </Node>
+    <Node ToolID="48">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="1326" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="StoreID" action="GroupBy" rename="StoreID" />
+            <SummarizeField field="Week" action="GroupBy" rename="Week" />
+            <SummarizeField field="Week_begin" action="GroupBy" rename="Week_begin" />
+            <SummarizeField field="Week_end" action="GroupBy" rename="Week_end" />
+            <SummarizeField field="Sum_Sum_Gross Margin" action="Sum" rename="Sum_Sum_Sum_Gross Margin" />
+            <SummarizeField field="Sum_Sum_Sales" action="Sum" rename="Sum_Sum_Sum_Sales" />
+            <SummarizeField field="Test_Group" action="GroupBy" rename="Test_Group" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="49">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1446" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File FileFormat="19" MaxRecords="">E:\Dokumente\05_Studium\Udacity\Predictive_Analytics\0_Projects\Project6_AB_Test\P6_Sales_Data_new.yxdb</File>
+          <Passwords />
+          <FormatSpecificOptions>
+            <NoSpatialIndex>False</NoSpatialIndex>
+            <SaveSource>True</SaveSource>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>P6_Sales_Data_new.yxdb</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
   </Nodes>
   <Connections>
     <Connection>
@@ -741,10 +743,6 @@ Week_begin = ...</DefaultAnnotationText>
     </Connection>
     <Connection>
       <Origin ToolID="10" Connection="Output" />
-      <Destination ToolID="43" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="10" Connection="Output" />
       <Destination ToolID="47" Connection="Input" />
     </Connection>
     <Connection>
@@ -765,7 +763,7 @@ Week_begin = ...</DefaultAnnotationText>
     </Connection>
     <Connection>
       <Origin ToolID="18" Connection="Join" />
-      <Destination ToolID="29" Connection="Input" />
+      <Destination ToolID="48" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="35" Connection="Output" />
@@ -796,8 +794,8 @@ Week_begin = ...</DefaultAnnotationText>
       <Destination ToolID="18" Connection="Left" />
     </Connection>
     <Connection>
-      <Origin ToolID="43" Connection="Output" />
-      <Destination ToolID="44" Connection="Input" />
+      <Origin ToolID="42" Connection="Output" />
+      <Destination ToolID="29" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="45" Connection="True" />
@@ -806,6 +804,10 @@ Week_begin = ...</DefaultAnnotationText>
     <Connection>
       <Origin ToolID="46" Connection="Output" />
       <Destination ToolID="45" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="48" Connection="Output" />
+      <Destination ToolID="49" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>

@@ -59,60 +59,6 @@
       </Properties>
       <EngineSettings Macro="Predictive Tools\AB_Trend.yxmc" />
     </Node>
-    <Node ToolID="7">
-      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
-        <Position x="366" y="90" />
-      </GuiSettings>
-      <Properties>
-        <Configuration joinByRecordPos="False">
-          <JoinInfo connection="Left">
-            <Field field="StoreID" />
-          </JoinInfo>
-          <JoinInfo connection="Right">
-            <Field field="StoreID" />
-          </JoinInfo>
-          <SelectConfiguration>
-            <Configuration outputConnection="Join">
-              <OrderChanged value="False" />
-              <CommaDecimal value="False" />
-              <SelectFields>
-                <SelectField field="Right_StoreID" selected="False" rename="Right_StoreID" input="Right_" />
-                <SelectField field="Right_Sq_Ft" selected="False" input="Right_" />
-                <SelectField field="Right_AvgMonthSales" selected="False" input="Right_" />
-                <SelectField field="Right_Right_Name" selected="False" input="Right_" />
-                <SelectField field="Right_Phone Number" selected="False" input="Right_" />
-                <SelectField field="Right_Street Combined" selected="False" input="Right_" />
-                <SelectField field="Right_Street 1" selected="False" input="Right_" />
-                <SelectField field="Right_Street 2" selected="False" input="Right_" />
-                <SelectField field="Right_Street 3" selected="False" input="Right_" />
-                <SelectField field="Right_City" selected="False" input="Right_" />
-                <SelectField field="Right_State" selected="False" input="Right_" />
-                <SelectField field="Right_Postal Code" selected="False" input="Right_" />
-                <SelectField field="Right_Country" selected="False" input="Right_" />
-                <SelectField field="Right_Coordinates" selected="False" input="Right_" />
-                <SelectField field="Right_Latitude" selected="False" input="Right_" />
-                <SelectField field="Right_Longitude" selected="False" input="Right_" />
-                <SelectField field="Right_Timezone" selected="False" input="Right_" />
-                <SelectField field="Right_Current Timezone Offset" selected="False" input="Right_" />
-                <SelectField field="Right_Week" selected="False" input="Right_" />
-                <SelectField field="Right_Week_begin" selected="False" input="Right_" />
-                <SelectField field="Right_Week_end" selected="False" input="Right_" />
-                <SelectField field="Right_Sum_Sum_Sales" selected="False" input="Right_" />
-                <SelectField field="Right_Name" selected="False" input="Right_" />
-                <SelectField field="Right_Right_State" selected="False" input="Right_" />
-                <SelectField field="*Unknown" selected="True" />
-              </SelectFields>
-            </Configuration>
-          </SelectConfiguration>
-        </Configuration>
-        <Annotation DisplayMode="0">
-          <Name />
-          <DefaultAnnotationText />
-          <Left value="False" />
-        </Annotation>
-      </Properties>
-      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
-    </Node>
     <Node ToolID="11">
       <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
         <Position x="546" y="90" />
@@ -159,6 +105,9 @@
           <DefaultAnnotationText>Store_List.yxdb</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
         <MetaInfo connection="Output">
           <RecordInfo>
             <Field name="StoreID" size="254" source="File: E:\Dokumente\05_Studium\Udacity\Predictive_Analytics\0_Projects\Project6_AB_Test\round-roaster-stores (1).csv" type="V_String" />
@@ -244,6 +193,9 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings Macro="Predictive Tools\AB_Controls.yxmc" />
     </Node>
@@ -317,7 +269,7 @@
         <Configuration>
           <Value name="get.treatment.id">StoreID</Value>
           <Value name="get.measure.id">StoreID</Value>
-          <Value name="get.measures">Trend=True,Seasonality=True</Value>
+          <Value name="get.measures">Trend=True,Seasonality=True,AvgMonthSales=False</Value>
           <Value name="cntl.num">2</Value>
           <Value name="unique.controls">True</Value>
           <Value name="inches">True</Value>
@@ -334,6 +286,9 @@
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
       </Properties>
       <EngineSettings Macro="Predictive Tools\AB_Controls.yxmc" />
     </Node>
@@ -422,7 +377,7 @@
           <OrderChanged value="False" />
           <CommaDecimal value="False" />
           <SelectFields>
-            <SelectField field="StoreID" selected="True" type="String" size="254" />
+            <SelectField field="StoreID" selected="True" type="V_WString" size="254" />
             <SelectField field="*Unknown" selected="True" />
           </SelectFields>
         </Configuration>
@@ -443,8 +398,13 @@
           <OrderChanged value="False" />
           <CommaDecimal value="False" />
           <SelectFields>
-            <SelectField field="StoreID" selected="True" type="String" size="254" />
-            <SelectField field="*Unknown" selected="True" />
+            <SelectField field="StoreID" selected="True" type="V_WString" size="254" />
+            <SelectField field="Sq_Ft" selected="True" />
+            <SelectField field="AvgMonthSales" selected="True" />
+            <SelectField field="State" selected="True" />
+            <SelectField field="Region" selected="True" />
+            <SelectField field="Test_Group" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
           </SelectFields>
         </Configuration>
         <Annotation DisplayMode="0">
@@ -477,27 +437,55 @@
       </Properties>
       <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
     </Node>
+    <Node ToolID="29">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.JoinMultiple.JoinMultiple">
+        <Position x="342" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <JoinByRecPos value="False" />
+          <JoinFields>
+            <JoinInfo connection="#1">
+              <Field field="StoreID" />
+            </JoinInfo>
+            <JoinInfo connection="#2">
+              <Field field="StoreID" />
+            </JoinInfo>
+          </JoinFields>
+          <CartesianMode>Error</CartesianMode>
+          <OutputJoinOnly value="False" />
+          <SelectConfiguration>
+            <Configuration outputConnection="Output">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Input_#2_StoreID" selected="False" rename="Input_#2_StoreID" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoinMultiple" />
+    </Node>
   </Nodes>
   <Connections>
     <Connection>
       <Origin ToolID="1" Connection="Output" />
       <Destination ToolID="22" Connection="Input" />
     </Connection>
-    <Connection>
+    <Connection name="#1">
       <Origin ToolID="2" Connection="Output" />
-      <Destination ToolID="7" Connection="Left" />
+      <Destination ToolID="29" Connection="Input" />
     </Connection>
-    <Connection>
+    <Connection name="#2">
       <Origin ToolID="23" Connection="Output" />
-      <Destination ToolID="7" Connection="Right" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="7" Connection="Join" />
-      <Destination ToolID="16" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="7" Connection="Join" />
-      <Destination ToolID="11" Connection="Input" />
+      <Destination ToolID="29" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="11" Connection="True" />
@@ -545,15 +533,19 @@
     </Connection>
     <Connection>
       <Origin ToolID="20" Connection="Join" />
-      <Destination ToolID="21" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="20" Connection="Join" />
       <Destination ToolID="26" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="22" Connection="Output" />
       <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
     </Connection>
   </Connections>
   <Properties>
